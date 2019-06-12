@@ -1,12 +1,16 @@
-﻿<Window x:Class="SaintSender.MainWindow"
+﻿<Window x:Name="SaintSender" x:Class="SaintSender.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SaintSender" Height="900" Width="1800
+        " FontSize="22">
     <Grid>
-        
+        <ListBox x:Name="ListEmails" HorizontalAlignment="Left" Height="849" VerticalAlignment="Top" Width="804" Margin="10,10,0,0" SelectionChanged="ListBox_SelectionChanged"/>
+        <Button x:Name="Compose" Content="Compose" HorizontalAlignment="Left" Margin="1352,42,0,0" VerticalAlignment="Top" Width="224" Height="78" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="1352,180,0,0" VerticalAlignment="Top" Width="224" Height="78" FontSize="24" FontWeight="Bold"/>
+
     </Grid>
 </Window>
