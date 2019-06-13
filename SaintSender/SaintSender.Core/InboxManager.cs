@@ -86,6 +86,7 @@ namespace SaintSender.Core
             {
                 Connection(client);
                 client.Inbox.AddFlags(messages, MessageFlags.Deleted, false);
+                client.Inbox.Expunge();
                 client.Disconnect(true);
             }
         }
