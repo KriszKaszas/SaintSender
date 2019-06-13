@@ -8,9 +8,8 @@
         Title="SaintSender" Height="900" Width="1800
         " FontSize="22">
     <Grid>
-        <ListBox x:Name="ListEmails" HorizontalAlignment="Left" Height="849" VerticalAlignment="Top" Width="804" Margin="10,10,0,0" SelectionChanged="ListBox_SelectionChanged"/>
-        <Button x:Name="Compose" Content="Compose" HorizontalAlignment="Left" Margin="1352,42,0,0" VerticalAlignment="Top" Width="224" Height="78" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="1352,180,0,0" VerticalAlignment="Top" Width="224" Height="78" FontSize="24" FontWeight="Bold"/>
-
+        <ListBox x:Name="listEmails" SelectionMode="Multiple" HorizontalAlignment="Left" Height="839"  VerticalAlignment="Top" Width="1508" Margin="10,10,0,0"/>
+        <Button x:Name="compose" Content="Compose" HorizontalAlignment="Left" Margin="1541,41,0,0" VerticalAlignment="Top" Width="219" Height="78" FontSize="24" FontWeight="Bold" Click="Compose_Click"/>
+        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Margin="1541,179,0,0" VerticalAlignment="Top" Width="219" Height="78" FontSize="24" FontWeight="Bold" Click="Delete_Click"/>
     </Grid>
 </Window>

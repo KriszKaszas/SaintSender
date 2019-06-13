@@ -1,0 +1,19 @@
+﻿<Window x:Class="SaintSender.ComposeMail.Compose"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaintSender.ComposeMail"
+        mc:Ignorable="d"
+        Title="ComposeMail" Height="600" Width="800">
+    <Grid>
+        <TextBox x:Name="emailRecipient" HorizontalAlignment="Left" Height="29" Margin="125,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621"/>
+        <TextBox x:Name="emailSubject" HorizontalAlignment="Left" Height="29" Margin="125,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621"/>
+        <Label Content="To:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,35,0,0" Width="76" Height="29" FontSize="16"/>
+        <Label Content="Subject:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,98,0,0" Width="76" Height="29" FontSize="16"/>
+        <Button x:Name="sendButton" Content="Send" HorizontalAlignment="Left" Margin="505,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" Click="SendButton_Click"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="640,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" Click="CancelButton_Click"/>
+        <TextBox x:Name="emailBody" HorizontalAlignment="Left" Height="342" Margin="34,159,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="712"/>
+
+    </Grid>
+</Window>

@@ -1,41 +1,27 @@
 ﻿using MailKit;
-using MailKit.Net.Imap;
 using MailKit.Net.Smtp;
-using MailKit.Search;
-using MailKit.Security;
 using MimeKit;
 using System;
 using System.Threading.Tasks;
 
 namespace SaintSender.Core
 {
-    public class Email
+    public class EmailComposer
     {
         public async void ConstructAndSendMessage(MimeMessage message)
         {
             await Task.Factory.StartNew(SendMessage, message);
         }
 
-        public MimeMessage GetMessageData()
+        public MimeMessage ConstructMessage(string recipentEmail, string messageSubject, string messageBody)
         {
             var message = new MimeMessage();
-
-            Console.WriteLine("Sender name:");
-            var senderName = Console.ReadLine();
-            message.From.Add(new MailboxAddress(senderName, "saintsender2.0@gmail.com"));
-
-            Console.WriteLine("Recipent Name:");
-            var recipentName = Console.ReadLine();
-            Console.WriteLine("Recipent e-mail:");
-            var recipentEmail = Console.ReadLine();
-            message.To.Add(new MailboxAddress(recipentName, recipentEmail));
-
-            Console.WriteLine("Subject:");
-            message.Subject = Console.ReadLine();
+            message.From.Add(new MailboxAddress("Saint Sender", "saintsender2.0@gmail.com"));
+            message.To.Add(new MailboxAddress("", recipentEmail));
+            message.Subject = messageSubject;
 
             var builder = new BodyBuilder();
-            Console.WriteLine("E-mail text:");
-            builder.TextBody = Console.ReadLine();
+            builder.TextBody = messageBody;
             message.Body = builder.ToMessageBody();
 
             return message;
@@ -63,4 +49,5 @@ namespace SaintSender.Core
 
             Console.ReadLine();
         }
+    }
 }
