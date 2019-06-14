@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using MailKit;
 using System.Windows.Input;
 using SaintSender.ViewMessage;
+using System.Windows.Controls;
 
 namespace SaintSender
 {
@@ -24,9 +25,10 @@ namespace SaintSender
             listEmails.ItemsSource = _mvm.InboxManager.ReceivedEmails;
         }
 
-        void lbi_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = (ReceivedEmail)listEmails.SelectedItem;
+            var src = (TextBlock)e.OriginalSource;
+            var selectedItem = (ReceivedEmail)src.DataContext;
             EmailView view = new EmailView(selectedItem, _mvm);
             view.Show();
         }
@@ -35,7 +37,7 @@ namespace SaintSender
         {
             var Compose = new Compose(_mvm);
             Compose.Show();
-
+            
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -47,6 +49,16 @@ namespace SaintSender
                 toDelete.Add(((ReceivedEmail)item).Uid);
             }
             _mvm.InboxManager.DeleteMessages(toDelete);
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void EgoBoost_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(_mvm.InspiringMessage.ChooseRandomMessage());
         }
     }
 }

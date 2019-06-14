@@ -26,7 +26,7 @@ namespace SaintSender.Core
 
         public override string ToString()
         {
-            return $"From: {EmailAddress} \n Subject: {Subject} \n Date: {EmailDate}";
+            return $"From:  {EmailAddress}\nSubject:  {Subject}\nDate:  {EmailDate}";
         }
 
         public bool Equals(ReceivedEmail other)

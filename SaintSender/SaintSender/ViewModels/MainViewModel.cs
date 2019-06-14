@@ -1,11 +1,6 @@
 ﻿using SaintSender.Core;
 using System;
-using System.Collections.Generic;
-using MailKit;
-using MailKit.Net.Imap;
-using MailKit.Search;
 using MailKit.Security;
-using MimeKit;
 
 
 namespace SaintSender.ViewModels
@@ -14,6 +9,8 @@ namespace SaintSender.ViewModels
     {
         public InboxManager InboxManager { get; set; } = new InboxManager();
         public EmailComposer EmailComposer { get; set; } = new EmailComposer();
+        public EgoBoostMessage InspiringMessage { get; set; } = new EgoBoostMessage();
+
 
         public bool IsEmailValid(string emailAddress)
         {

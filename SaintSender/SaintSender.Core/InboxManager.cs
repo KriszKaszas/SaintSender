@@ -21,7 +21,7 @@ namespace SaintSender.Core
 
         public void StartGettinMessages()
         {
-            _timer.Interval = TimeSpan.FromMilliseconds(1000);
+            _timer.Interval = TimeSpan.FromMilliseconds(5000);
             _timer.Tick += (sender, args) => GetMessages();
             _timer.Start();
         }

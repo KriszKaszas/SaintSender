@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="EmailView" Height="600" Width="800">
     <Grid>
-        <TextBox x:Name="emailSender" HorizontalAlignment="Left" Height="29" Margin="125,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" FontSize="20"/>
-        <TextBox x:Name="emailSubject" HorizontalAlignment="Left" Height="29" Margin="125,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" FontSize="20"/>
-        <Label Content="From:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,35,0,0" Width="76" Height="29" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Subject:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,98,0,0" Width="76" Height="29" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="emailBody" HorizontalAlignment="Left" Height="342" Margin="34,159,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="712" FontSize="20"/>
-        <Button x:Name="replyButton" Content="Reply" HorizontalAlignment="Left" Margin="505,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" Click="ReplyButton_Click"/>
-        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="640,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" RenderTransformOrigin="-0.379,-0.173" Click="DeleteButton_Click"/>
+        <TextBox x:Name="emailSender" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="125,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" FontSize="18"/>
+        <TextBox x:Name="emailSubject" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="125,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" FontSize="18"/>
+        <Label Content="From:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,29,0,0" Width="76" Height="39" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Subject:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,92,0,0" Width="86" Height="39" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="emailBody" IsReadOnly="True" HorizontalAlignment="Left" Height="342" Margin="34,159,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="712" FontSize="20"/>
+        <Button x:Name="replyButton" Content="Reply" HorizontalAlignment="Left" Margin="349,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" Click="ReplyButton_Click"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="494,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" RenderTransformOrigin="-0.379,-0.173" Click="DeleteButton_Click"/>
+        <Button x:Name="closeButton" Content="Close" HorizontalAlignment="Left" Margin="640,518,0,0" VerticalAlignment="Top" Width="106" Height="34" FontSize="20" RenderTransformOrigin="-0.379,-0.173" Click="CloseButton_Click" />
     </Grid>
 </Window>

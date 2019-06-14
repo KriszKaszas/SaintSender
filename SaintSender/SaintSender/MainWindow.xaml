@@ -5,21 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender"
         mc:Ignorable="d"
-        Title="SaintSender" Height="900" Width="1800
-        " FontSize="22">
+        Title="SaintSender" Height="900" Width="1000" FontSize="22">
     <Grid>
-        <ListBox x:Name="listEmails" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick" SelectionMode="Multiple" HorizontalAlignment="Left" Height="839"  VerticalAlignment="Top" Width="1508" Margin="10,10,0,0">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="IsSelected" Value="True"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
-            <Button x:Name="compose" Content="Compose" HorizontalAlignment="Left" Margin="1541,41,0,0" VerticalAlignment="Top" Width="219" Height="78" FontSize="24" FontWeight="Bold" Click="Compose_Click"/>
-        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Margin="1541,179,0,0" VerticalAlignment="Top" Width="219" Height="78" FontSize="24" FontWeight="Bold" Click="Delete_Click"/>
+        <ListBox x:Name="listEmails" FontWeight="Bold" ListBoxItem.MouseDoubleClick="ListBoxItem_MouseDoubleClick" SelectionMode="Multiple" HorizontalAlignment="Left" Height="839"  VerticalAlignment="Top" Width="797" Margin="10,10,0,0"/>
+        <Button x:Name="compose" Content="Compose" HorizontalAlignment="Left" Margin="829,10,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="Compose_Click"/>
+        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Margin="829,89,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="Delete_Click"/>
+        <Button x:Name="close" Content="Quit" HorizontalAlignment="Left" Margin="829,801,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="Close_Click" />
+        <Button x:Name="egoBoost" Content=":)" HorizontalAlignment="Left" Margin="829,721,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="EgoBoost_Click"/>
     </Grid>
 </Window>

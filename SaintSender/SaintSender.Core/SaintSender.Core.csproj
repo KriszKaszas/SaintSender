@@ -53,6 +53,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EgoBoostMessage.cs" />
     <Compile Include="ReceivedEmail.cs" />
     <Compile Include="EmailComposer.cs" />
     <Compile Include="InboxManager.cs" />

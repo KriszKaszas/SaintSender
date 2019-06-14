@@ -26,6 +26,7 @@ namespace SaintSender.ComposeMail
             var message = new MimeMessage();
             message = _mvm.EmailComposer.ConstructMessage(emailRecipient.Text, emailSubject.Text, emailBody.Text);
             _mvm.EmailComposer.ConstructAndSendMessage(message);
+            MessageBox.Show("Your E-mail Has Been Sent!");
             Close();
         }
 
