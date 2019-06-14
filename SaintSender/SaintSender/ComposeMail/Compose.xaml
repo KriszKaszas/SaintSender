@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.ComposeMail"
         mc:Ignorable="d"
-        Title="ComposeMail" Height="600" Width="800">
+        Title="Compose E-mail" Height="600" Width="800" FontSize="18">
     <Grid>
         <TextBox x:Name="emailRecipient" HorizontalAlignment="Left" Height="29" Margin="125,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" FontSize="18"/>
         <TextBox x:Name="emailSubject" HorizontalAlignment="Left" Height="29" Margin="125,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" FontSize="18"/>
