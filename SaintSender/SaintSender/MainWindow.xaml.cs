@@ -1,10 +1,11 @@
 ﻿using SaintSender.ViewModels;
 using System.Windows;
 using SaintSender.ComposeMail;
-using System.Windows.Controls;
 using SaintSender.Core;
 using System.Collections.Generic;
 using MailKit;
+using System.Windows.Input;
+using SaintSender.ViewMessage;
 
 namespace SaintSender
 {
@@ -23,13 +24,19 @@ namespace SaintSender
             listEmails.ItemsSource = _mvm.InboxManager.ReceivedEmails;
         }
 
+        void lbi_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = (ReceivedEmail)listEmails.SelectedItem;
+            EmailView view = new EmailView(selectedItem, _mvm);
+            view.Show();
+        }
+
         private void Compose_Click(object sender, RoutedEventArgs e)
         {
             var Compose = new Compose(_mvm);
             Compose.Show();
 
         }
-
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {

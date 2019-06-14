@@ -27,7 +27,6 @@ namespace SaintSender.Core
             return message;
         }
 
-
         public void SendMessage(Object state)
         {
             var message = (MimeMessage)state;
