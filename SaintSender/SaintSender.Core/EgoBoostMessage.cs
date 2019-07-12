@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Before anyone gets a heart attack, this is meant to be a joke.
+
+using System;
 
 namespace SaintSender.Core
 {

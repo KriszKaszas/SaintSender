@@ -7,6 +7,7 @@ using MailKit;
 using System.Windows.Input;
 using SaintSender.ViewMessage;
 using System.Windows.Controls;
+using System;
 
 namespace SaintSender
 {
@@ -27,10 +28,17 @@ namespace SaintSender
 
         void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var src = (TextBlock)e.OriginalSource;
-            var selectedItem = (ReceivedEmail)src.DataContext;
-            EmailView view = new EmailView(selectedItem, _mvm);
-            view.Show();
+            try
+            {
+                var src = (TextBlock)e.OriginalSource;
+                var selectedItem = (ReceivedEmail)src.DataContext;
+                EmailView view = new EmailView(selectedItem, _mvm);
+                view.Show();
+            }
+            catch (InvalidCastException)
+            {
+                Console.WriteLine("Invalid double click area");
+            }
         }
 
         private void Compose_Click(object sender, RoutedEventArgs e)
