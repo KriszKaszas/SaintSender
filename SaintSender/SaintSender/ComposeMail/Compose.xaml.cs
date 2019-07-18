@@ -9,7 +9,7 @@ namespace SaintSender.ComposeMail
     /// </summary>
     public partial class Compose : Window
     {
-        MainViewModel _mvm;
+        private MainViewModel _mvm;
               
         public Compose(MainViewModel mvm, string emailAddress = null, string Subject = null)
         {
@@ -24,8 +24,8 @@ namespace SaintSender.ComposeMail
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             var message = new MimeMessage();
-            message = _mvm.EmailComposer.ConstructMessage(emailRecipient.Text, emailSubject.Text, emailBody.Text);
-            _mvm.EmailComposer.ConstructAndSendMessage(message);
+            message = _mvm.emailComposer.ConstructMessage(emailRecipient.Text, emailSubject.Text, emailBody.Text);
+            _mvm.emailComposer.ConstructAndSendMessage(message);
             MessageBox.Show("Your E-mail Has Been Sent!");
             Close();
         }

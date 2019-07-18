@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender"
         mc:Ignorable="d"
-        Title="SaintSender" Height="900" Width="1000" FontSize="22">
+        Title="SaintSender" Height="900" Width="1090" FontSize="22">
     <Grid>
-        <ListBox x:Name="listEmails" FontWeight="Bold" ListBoxItem.MouseDoubleClick="ListBoxItem_MouseDoubleClick" SelectionMode="Multiple" HorizontalAlignment="Left" Height="839"  VerticalAlignment="Top" Width="797" Margin="10,10,0,0"/>
-        <Button x:Name="compose" Content="Compose" HorizontalAlignment="Left" Margin="829,10,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="Compose_Click"/>
-        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Margin="829,89,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="Delete_Click"/>
-        <Button x:Name="close" Content="Quit" HorizontalAlignment="Left" Margin="829,801,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="Close_Click" />
-        <Button x:Name="egoBoost" Content=":)" HorizontalAlignment="Left" Margin="829,721,0,0" VerticalAlignment="Top" Width="139" Height="48" FontSize="24" FontWeight="Bold" Click="EgoBoost_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="631*"/>
+            <ColumnDefinition Width="362*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="listEmails" FontWeight="Bold" ListBoxItem.MouseDoubleClick="ListBoxItem_MouseDoubleClick" SelectionMode="Multiple" HorizontalAlignment="Left" Height="760"  VerticalAlignment="Top" Width="797" Margin="10,89,0,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="composeButton" Content="Compose" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="180" Height="48" FontSize="24" FontWeight="Bold" Click="Compose_Click"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="201,24,0,0" VerticalAlignment="Top" Width="180" Height="48" FontSize="24" FontWeight="Bold" Click="Delete_Click"/>
+        <Button x:Name="closeButton" Content="Quit" HorizontalAlignment="Left" Margin="170,801,0,0" VerticalAlignment="Top" Width="183" Height="48" FontSize="24" FontWeight="Bold" Click="Close_Click" Grid.Column="1" />
+        <Button x:Name="egoBoostButton" Content=":)" HorizontalAlignment="Left" Margin="391,24,0,0" VerticalAlignment="Top" Width="180" Height="48" FontSize="24" FontWeight="Bold" Click="EgoBoost_Click"/>
+        <ComboBox x:Name="account" Grid.Column="1" HorizontalAlignment="Left" Margin="170,374,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label Content="Account settings" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="162,24,0,0" Height="48" Width="203" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="switchUserButton" Content="Switch User" Grid.Column="1" HorizontalAlignment="Left" Margin="170,170,0,0" VerticalAlignment="Top" Width="183" Height="48" RenderTransformOrigin="0.56,0.531" FontSize="24" FontWeight="Bold" Click="SwitchUser_Click"/>
+        <Button x:Name="addUserButton" Content="Add User" Grid.Column="1" HorizontalAlignment="Left" Margin="170,89,0,0" VerticalAlignment="Top" Width="183" Height="48" FontSize="24" FontWeight="Bold" Click="AddUser_Click"/>
+        <Label Content="E-mail Accounts" Grid.Column="1" HorizontalAlignment="Left" Margin="167,322,0,0" VerticalAlignment="Top" Width="196" Height="45" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="addAccountButton" Content="Add Account" HorizontalAlignment="Left" Margin="170,240,0,0" VerticalAlignment="Top" Width="183" Height="48" Grid.Column="1" FontWeight="Bold" FontSize="24" Click="AddAccount_Click"/>
     </Grid>
 </Window>

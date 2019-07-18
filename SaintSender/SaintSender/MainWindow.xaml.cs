@@ -1,13 +1,16 @@
-﻿using SaintSender.ViewModels;
-using System.Windows;
-using SaintSender.ComposeMail;
-using SaintSender.Core;
+﻿using System.Windows;
 using System.Collections.Generic;
-using MailKit;
 using System.Windows.Input;
-using SaintSender.ViewMessage;
 using System.Windows.Controls;
 using System;
+using MailKit;
+using SaintSender.Core;
+using SaintSender.ViewModels;
+using SaintSender.ViewMessage;
+using SaintSender.ComposeMail;
+using SaintSender.AddEmailAccount;
+using SaintSender.AddUser;
+using SaintSender.Login;
 
 namespace SaintSender
 {
@@ -23,7 +26,7 @@ namespace SaintSender
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             _mvm.GetUserEmails();
-            listEmails.ItemsSource = _mvm.InboxManager.ReceivedEmails;
+            listEmails.ItemsSource = _mvm.inboxManager.ReceivedEmails;
         }
 
         void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -56,7 +59,7 @@ namespace SaintSender
             {
                 toDelete.Add(((ReceivedEmail)item).Uid);
             }
-            _mvm.InboxManager.DeleteMessages(toDelete);
+            _mvm.inboxManager.DeleteMessages(toDelete);
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -66,7 +69,26 @@ namespace SaintSender
 
         private void EgoBoost_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(_mvm.InspiringMessage.ChooseRandomMessage());
+            MessageBox.Show(_mvm.inspiringMessage.ChooseRandomMessage());
+        }
+
+        private void AddAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var addNewAccount = new AddNewAccount(_mvm);
+            addNewAccount.Show();
+        }
+
+        private void AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            var addNewUser = new AddNewUser(_mvm);
+            addNewUser.Show();
+        }
+
+
+        private void SwitchUser_Click(object sender, RoutedEventArgs e)
+        {
+            var login = new UserLogin(_mvm);
+            login.Show();
         }
     }
 }

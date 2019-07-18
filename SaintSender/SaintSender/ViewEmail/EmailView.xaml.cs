@@ -46,7 +46,7 @@ namespace SaintSender.ViewMessage
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            _mvm.InboxManager.DeleteMessages(_emailId);
+            _mvm.inboxManager.DeleteMessages(_emailId);
             Close();
         }
 

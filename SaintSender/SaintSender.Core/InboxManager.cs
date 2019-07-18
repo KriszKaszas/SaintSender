@@ -4,13 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Threading;
 using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Search;
 using MailKit.Security;
-using MimeKit;
+
 
 namespace SaintSender.Core
 {

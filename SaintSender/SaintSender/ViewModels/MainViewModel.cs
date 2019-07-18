@@ -1,27 +1,32 @@
 ﻿using SaintSender.Core;
 using System;
 using MailKit.Security;
-
+using System.Collections.ObjectModel;
 
 namespace SaintSender.ViewModels
 {
     public class MainViewModel
     {
-        public InboxManager InboxManager { get; set; } = new InboxManager();
-        public EmailComposer EmailComposer { get; set; } = new EmailComposer();
-        public EgoBoostMessage InspiringMessage { get; set; } = new EgoBoostMessage();
+        public InboxManager inboxManager = new InboxManager();
+        public EmailComposer emailComposer = new EmailComposer();
+        public EgoBoostMessage inspiringMessage = new EgoBoostMessage();
+        private Encryption Encryption = new Encryption();
+        public ObservableCollection<Users> Users { get; set; } = new ObservableCollection<Users>();
+        
+
+
 
 
         public bool IsEmailValid(string emailAddress)
         {
-            return InboxManager.ValidateEmailFormat(emailAddress);
+            return inboxManager.ValidateEmailFormat(emailAddress);
         }
 
         public void GetUserEmails()
         {
             try
             {
-                InboxManager.StartGettinMessages();
+                inboxManager.StartGettinMessages();
             }
             catch (AuthenticationException e)
             {
