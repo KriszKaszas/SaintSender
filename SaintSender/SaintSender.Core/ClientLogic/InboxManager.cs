@@ -25,6 +25,11 @@ namespace SaintSender.Core
             _timer.Start();
         }
 
+        public void StopGettingMessages()
+        {
+            _timer.Stop();
+        }
+
         private void ManageEmailChanges(List<ReceivedEmail> downloaded)
         {
             var toAdd = downloaded.Where(email => !ReceivedEmails.Contains(email)).ToList();

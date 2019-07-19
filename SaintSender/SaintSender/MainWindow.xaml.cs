@@ -107,5 +107,22 @@ namespace SaintSender
             login.Show();
         }
 
+        private void UsersCbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var combobox = (ComboBox)e.Source;
+            var user = (User)combobox.SelectedItem;
+            _mvm.inboxManager.StopGettingMessages();
+            _mvm.Users.CurrentUser = user;
+            listEmails.ItemsSource = null;
+        }
+
+        private void AccountCbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var combobox = (ComboBox)e.Source;
+            var account = (EmailAccount)combobox.SelectedItem;
+            _mvm.inboxManager.StartGettinMessages(account);
+            _mvm.Users.CurrentUser.CurrentEmailAccount = account;
+            accountCbox.ItemsSource = _mvm.Users.CurrentUser.accounts;
+        }
     }
 }
