@@ -12,6 +12,14 @@ using SaintSender.AddEmailAccount;
 using SaintSender.AddUser;
 using SaintSender.Login;
 
+
+// accountuk kilistazasa
+// user váltás
+// account váltás
+// Users objektum szerializálása
+// no authentication fields can be left empty
+
+
 namespace SaintSender
 {
     /// <summary>
@@ -25,11 +33,12 @@ namespace SaintSender
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //if ( _mvm.users.CurrentUser != null && _mvm.users.CurrentUser.CurrentEmailAccount != null)
-            //{
-            //    _mvm.GetUserEmails(_mvm.users.CurrentUser.CurrentEmailAccount);
-            //    listEmails.ItemsSource = _mvm.inboxManager.ReceivedEmails;
-            //}
+            listEmails.ItemsSource = _mvm.inboxManager.ReceivedEmails;
+            usersCbox.ItemsSource = _mvm.Users.RegisteredUsers;
+            if (_mvm.Users.CurrentUser != null && _mvm.Users.CurrentUser.CurrentEmailAccount != null)
+            {
+                _mvm.GetUserEmails(_mvm.Users.CurrentUser.CurrentEmailAccount);
+            }
         }
 
         void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -62,7 +71,7 @@ namespace SaintSender
             {
                 toDelete.Add(((ReceivedEmail)item).Uid);
             }
-            _mvm.inboxManager.DeleteMessagesAsync(new DeleteMessageData(toDelete, _mvm.users.CurrentUser.CurrentEmailAccount));
+            _mvm.inboxManager.DeleteMessagesAsync(new DeleteMessageData(toDelete, _mvm.Users.CurrentUser.CurrentEmailAccount));
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -80,8 +89,9 @@ namespace SaintSender
             var addNewAccount = new AddNewAccount(_mvm);
             if (addNewAccount.ShowDialog() == true)
             {
-                _mvm.GetUserEmails(_mvm.users.CurrentUser.CurrentEmailAccount);
+                _mvm.GetUserEmails(_mvm.Users.CurrentUser.CurrentEmailAccount);
             }
+            accountCbox.ItemsSource = _mvm.Users.CurrentUser.accounts;
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)

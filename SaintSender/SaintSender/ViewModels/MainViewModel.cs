@@ -11,13 +11,14 @@ namespace SaintSender.ViewModels
         public EmailComposer emailComposer = new EmailComposer();
         public EgoBoostMessage inspiringMessage = new EgoBoostMessage();
         public Encryption encryption = new Encryption();
-        public Users users = new Users();
+
+        public Users Users { get; } = new Users();
 
         public bool IsEmailValid(string emailAddress)
         {
             return inboxManager.ValidateEmailFormat(emailAddress);
         }
-
+        
         public void GetUserEmails(EmailAccount currentAccount)
         {
             inboxManager.StartGettinMessages(currentAccount);
@@ -25,8 +26,8 @@ namespace SaintSender.ViewModels
 
         public void AddNewUser(User user)
         {
-            users.AddUser(user);
-            users.CurrentUser = user;
+            Users.AddUser(user);
+            Users.CurrentUser = user;
         }
     }
 }

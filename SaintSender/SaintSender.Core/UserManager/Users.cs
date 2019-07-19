@@ -7,11 +7,12 @@ namespace SaintSender.Core
     {
 
         public User CurrentUser { get; set; }
-        public ObservableCollection<User> users = new ObservableCollection<User>();
+
+        public ObservableCollection<User> RegisteredUsers { get; } = new ObservableCollection<User>();
 
         public void AddUser(User user)
         {
-            users.Add(user);
+            RegisteredUsers.Add(user);
             CurrentUser = user;
         }
 

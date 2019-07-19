@@ -20,5 +20,10 @@ namespace SaintSender.Core
             EmailAddress = emailAddress;
             ApplicationPassword = applicationPassword;
         }
+
+        public override string ToString()
+        {
+            return EmailAddress;
+        }
     }
 }

@@ -25,5 +25,10 @@ namespace SaintSender.Core
         {
             accounts.Add(newAccount);
         }
+
+        public override string ToString()
+        {
+            return UserName;
+        }
     }
 }

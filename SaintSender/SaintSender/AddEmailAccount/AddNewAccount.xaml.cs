@@ -27,8 +27,8 @@ namespace SaintSender.AddEmailAccount
         {
             int portInteger = Int32.Parse(port.Text);
             var newAccount = new EmailAccount(IMAPServer.Text, portInteger, emailAddress.Text, applicationPassword.Text);
-            _mvm.users.CurrentUser.AddAccount(newAccount);
-            _mvm.users.CurrentUser.CurrentEmailAccount = newAccount;
+            _mvm.Users.CurrentUser.AddAccount(newAccount);
+            _mvm.Users.CurrentUser.CurrentEmailAccount = newAccount;
             MessageBox.Show("Account successfully added");
             DialogResult = true;
         }
