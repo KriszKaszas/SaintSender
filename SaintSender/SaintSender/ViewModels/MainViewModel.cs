@@ -10,28 +10,23 @@ namespace SaintSender.ViewModels
         public InboxManager inboxManager = new InboxManager();
         public EmailComposer emailComposer = new EmailComposer();
         public EgoBoostMessage inspiringMessage = new EgoBoostMessage();
-        private Encryption Encryption = new Encryption();
-        public ObservableCollection<Users> Users { get; set; } = new ObservableCollection<Users>();
-        
-
-
-
+        public Encryption encryption = new Encryption();
+        public Users users = new Users();
 
         public bool IsEmailValid(string emailAddress)
         {
             return inboxManager.ValidateEmailFormat(emailAddress);
         }
 
-        public void GetUserEmails()
+        public void GetUserEmails(EmailAccount currentAccount)
         {
-            try
-            {
-                inboxManager.StartGettinMessages();
-            }
-            catch (AuthenticationException e)
-            {
-                Console.WriteLine(e);
-            }
+            inboxManager.StartGettinMessages(currentAccount);
+        }
+
+        public void AddNewUser(User user)
+        {
+            users.AddUser(user);
+            users.CurrentUser = user;
         }
     }
 }

@@ -8,19 +8,20 @@
         Title="SaintSender" Height="900" Width="1090" FontSize="22">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="631*"/>
-            <ColumnDefinition Width="362*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="listEmails" FontWeight="Bold" ListBoxItem.MouseDoubleClick="ListBoxItem_MouseDoubleClick" SelectionMode="Multiple" HorizontalAlignment="Left" Height="760"  VerticalAlignment="Top" Width="797" Margin="10,89,0,0" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="listEmails" FontWeight="Bold" ListBoxItem.MouseDoubleClick="ListBoxItem_MouseDoubleClick" SelectionMode="Multiple" HorizontalAlignment="Left" Height="760"  VerticalAlignment="Top" Width="797" Margin="10,89,0,0"/>
         <Button x:Name="composeButton" Content="Compose" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="180" Height="48" FontSize="24" FontWeight="Bold" Click="Compose_Click"/>
         <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="201,24,0,0" VerticalAlignment="Top" Width="180" Height="48" FontSize="24" FontWeight="Bold" Click="Delete_Click"/>
-        <Button x:Name="closeButton" Content="Quit" HorizontalAlignment="Left" Margin="170,801,0,0" VerticalAlignment="Top" Width="183" Height="48" FontSize="24" FontWeight="Bold" Click="Close_Click" Grid.Column="1" />
+        <Button x:Name="closeButton" Content="Quit" HorizontalAlignment="Left" Margin="858,801,0,0" VerticalAlignment="Top" Width="183" Height="48" FontSize="24" FontWeight="Bold" Click="Close_Click" />
         <Button x:Name="egoBoostButton" Content=":)" HorizontalAlignment="Left" Margin="391,24,0,0" VerticalAlignment="Top" Width="180" Height="48" FontSize="24" FontWeight="Bold" Click="EgoBoost_Click"/>
-        <ComboBox x:Name="account" Grid.Column="1" HorizontalAlignment="Left" Margin="170,374,0,0" VerticalAlignment="Top" Width="183"/>
-        <Label Content="Account settings" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="162,24,0,0" Height="48" Width="203" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="switchUserButton" Content="Switch User" Grid.Column="1" HorizontalAlignment="Left" Margin="170,170,0,0" VerticalAlignment="Top" Width="183" Height="48" RenderTransformOrigin="0.56,0.531" FontSize="24" FontWeight="Bold" Click="SwitchUser_Click"/>
-        <Button x:Name="addUserButton" Content="Add User" Grid.Column="1" HorizontalAlignment="Left" Margin="170,89,0,0" VerticalAlignment="Top" Width="183" Height="48" FontSize="24" FontWeight="Bold" Click="AddUser_Click"/>
-        <Label Content="E-mail Accounts" Grid.Column="1" HorizontalAlignment="Left" Margin="167,322,0,0" VerticalAlignment="Top" Width="196" Height="45" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="addAccountButton" Content="Add Account" HorizontalAlignment="Left" Margin="170,240,0,0" VerticalAlignment="Top" Width="183" Height="48" Grid.Column="1" FontWeight="Bold" FontSize="24" Click="AddAccount_Click"/>
+        <ComboBox x:Name="account" HorizontalAlignment="Left" Margin="858,438,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label Content="Account settings" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="850,24,0,0" Height="48" Width="203" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="switchUserButton" Content="Switch User" HorizontalAlignment="Left" Margin="858,168,0,0" VerticalAlignment="Top" Width="183" Height="48" RenderTransformOrigin="0.56,0.531" FontSize="24" FontWeight="Bold" Click="SwitchUser_Click"/>
+        <Button x:Name="addUserButton" Content="Add User" HorizontalAlignment="Left" Margin="858,89,0,0" VerticalAlignment="Top" Width="183" Height="48" FontSize="24" FontWeight="Bold" Click="AddUser_Click"/>
+        <Label Content="E-mail Accounts" HorizontalAlignment="Left" Margin="855,386,0,0" VerticalAlignment="Top" Width="196" Height="45" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="addAccountButton" Content="Add Account" HorizontalAlignment="Left" Margin="858,323,0,0" VerticalAlignment="Top" Width="183" Height="48" FontWeight="Bold" FontSize="24" Click="AddAccount_Click"/>
+        <Button x:Name="removeUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="858,240,0,0" VerticalAlignment="Top" Width="184" Height="48" FontWeight="Bold"/>
+        <Button x:Name="removeAccountButton" Content="Remove Account" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Margin="858,496,0,0" Height="48" RenderTransformOrigin="2.607,3.677" FontWeight="Bold"/>
     </Grid>
 </Window>

@@ -14,7 +14,7 @@ namespace SaintSender.ViewMessage
     public partial class EmailView : Window
     {
         private MainViewModel _mvm;
-        private IList<UniqueId> _emailId = new List<UniqueId>(); 
+        private List<UniqueId> _emailId = new List<UniqueId>(); 
         public EmailView(ReceivedEmail email, MainViewModel mvm)
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace SaintSender.ViewMessage
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            _mvm.inboxManager.DeleteMessages(_emailId);
+            _mvm.inboxManager.DeleteMessagesAsync(new DeleteMessageData(_emailId, _mvm.users.CurrentUser.CurrentEmailAccount));
             Close();
         }
 

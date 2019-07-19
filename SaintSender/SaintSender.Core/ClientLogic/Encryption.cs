@@ -10,7 +10,7 @@ namespace SaintSender.Core
         private const int SaltSize = 16;
         private const int HashSize = 20;
 
-        string Encrypt(string password, int iterations)
+        private string Encrypt(string password, int iterations)
         {
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[SaltSize]);
@@ -27,17 +27,17 @@ namespace SaintSender.Core
             return string.Format("$SAINTSENDERHASH$V1${0}${1}", iterations, base64Hash);
         }
 
-        string Hash(string password)
+        public string Hash(string password)
         {
             return Encrypt(password, 10000);
         }
 
-        bool IsHashSupported(string hashString)
+        private bool IsHashSupported(string hashString)
         {
             return hashString.Contains("$SAINTSENDERHASH$V1$");
         }
 
-        bool Verify(string password, string hashedPassword)
+        public bool Verify(string password, string hashedPassword)
         {
             if (!IsHashSupported(hashedPassword))
             {

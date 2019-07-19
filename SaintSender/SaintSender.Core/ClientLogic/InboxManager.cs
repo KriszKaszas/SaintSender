@@ -18,10 +18,10 @@ namespace SaintSender.Core
         public ObservableCollection<ReceivedEmail> ReceivedEmails { get; set; } = new ObservableCollection<ReceivedEmail>();
         private readonly DispatcherTimer _timer = new DispatcherTimer();
 
-        public void StartGettinMessages()
+        public void StartGettinMessages(EmailAccount currentAccount)
         {
             _timer.Interval = TimeSpan.FromMilliseconds(5000);
-            _timer.Tick += (sender, args) => GetMessages();
+            _timer.Tick += (sender, args) => DownloadMessagesAsync(currentAccount);
             _timer.Start();
         }
 
@@ -34,28 +34,31 @@ namespace SaintSender.Core
         }
 
 
-        private async void GetMessages()
+        private async void DownloadMessagesAsync(EmailAccount currentAccount)
         {
-            var messages = await Task<List<ReceivedEmail>>.Factory.StartNew(DownloadMessages);
+            var messages = await Task<List<ReceivedEmail>>.Factory.StartNew(DownloadMessages, currentAccount);
             ManageEmailChanges(messages);
         }
 
 
-        private IList<UniqueId> Connection(ImapClient client, FolderAccess accessMode = FolderAccess.ReadWrite)
+        private IList<UniqueId> Connection(ImapClient client, EmailAccount currentAccount, FolderAccess accessMode = FolderAccess.ReadWrite)
         {
-            client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
-            client.Authenticate("saintsender2.0@gmail.com", "atssddvndnffxggx");
+            client.Connect(currentAccount.IMAPServer, currentAccount.Port, SecureSocketOptions.SslOnConnect);
+            client.Authenticate(currentAccount.EmailAddress, currentAccount.ApplicationPassword);
+            //client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+            //client.Authenticate("saintsender2.0@gmail.com", "atssddvndnffxggx");
             client.Inbox.Open(accessMode);
             return client.Inbox.Search(SearchQuery.All);
         }
 
 
-        public List<ReceivedEmail> DownloadMessages()
+        public List<ReceivedEmail> DownloadMessages(Object currentEmail)
         {
+            EmailAccount currentAccount = (EmailAccount)currentEmail;
             var messages = new List<ReceivedEmail>();
             using (var client = new ImapClient())
             {
-                var uids = Connection(client);
+                var uids = Connection(client, currentAccount);
                 foreach (var uid in uids)
                 {
                     try
@@ -73,17 +76,19 @@ namespace SaintSender.Core
             }
         }
 
-        public async void DeleteMessages(IList<UniqueId> messages)
+        public async void DeleteMessagesAsync(DeleteMessageData messageData)
         {
-            await Task.Factory.StartNew(RemoteDelete, messages);
+            await Task.Factory.StartNew(DeleteMessages, (object)messageData);
         }
 
-        private void RemoteDelete(object state)
+        private void DeleteMessages(object state)
         {
-            var messages = (IList<UniqueId>)state;
+            var deleteMessageData = (DeleteMessageData)state;
+            var currentAccount = deleteMessageData.currentAccount;
+            var messages = deleteMessageData.uids;
             using (var client = new ImapClient())
             {
-                Connection(client);
+                Connection(client, currentAccount);
                 client.Inbox.AddFlags(messages, MessageFlags.Deleted, false);
                 client.Inbox.Expunge();
                 client.Disconnect(true);

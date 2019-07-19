@@ -25,8 +25,11 @@ namespace SaintSender
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            _mvm.GetUserEmails();
-            listEmails.ItemsSource = _mvm.inboxManager.ReceivedEmails;
+            //if ( _mvm.users.CurrentUser != null && _mvm.users.CurrentUser.CurrentEmailAccount != null)
+            //{
+            //    _mvm.GetUserEmails(_mvm.users.CurrentUser.CurrentEmailAccount);
+            //    listEmails.ItemsSource = _mvm.inboxManager.ReceivedEmails;
+            //}
         }
 
         void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -59,7 +62,7 @@ namespace SaintSender
             {
                 toDelete.Add(((ReceivedEmail)item).Uid);
             }
-            _mvm.inboxManager.DeleteMessages(toDelete);
+            _mvm.inboxManager.DeleteMessagesAsync(new DeleteMessageData(toDelete, _mvm.users.CurrentUser.CurrentEmailAccount));
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -75,7 +78,10 @@ namespace SaintSender
         private void AddAccount_Click(object sender, RoutedEventArgs e)
         {
             var addNewAccount = new AddNewAccount(_mvm);
-            addNewAccount.Show();
+            if (addNewAccount.ShowDialog() == true)
+            {
+                _mvm.GetUserEmails(_mvm.users.CurrentUser.CurrentEmailAccount);
+            }
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -90,5 +96,6 @@ namespace SaintSender
             var login = new UserLogin(_mvm);
             login.Show();
         }
+
     }
 }

@@ -1,17 +1,7 @@
-﻿using SaintSender.ViewModels;
+﻿using SaintSender.Core;
+using SaintSender.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SaintSender.AddEmailAccount
 {
@@ -31,6 +21,16 @@ namespace SaintSender.AddEmailAccount
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            int portInteger = Int32.Parse(port.Text);
+            var newAccount = new EmailAccount(IMAPServer.Text, portInteger, emailAddress.Text, applicationPassword.Text);
+            _mvm.users.CurrentUser.AddAccount(newAccount);
+            _mvm.users.CurrentUser.CurrentEmailAccount = newAccount;
+            MessageBox.Show("Account successfully added");
+            DialogResult = true;
         }
     }
 }

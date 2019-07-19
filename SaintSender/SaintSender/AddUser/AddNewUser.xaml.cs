@@ -1,4 +1,5 @@
-﻿using SaintSender.ViewModels;
+﻿using SaintSender.Core;
+using SaintSender.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,23 @@ namespace SaintSender.AddUser
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            if(password.Text == confirmPassword.Text)
+            {
+                var newUser = new User(name.Text, _mvm.encryption.Hash(password.Text));
+                _mvm.AddNewUser(newUser);
+                MessageBox.Show("New user successfuly added!");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Passwords don't match!");
+                password.Clear();
+                confirmPassword.Clear();
+            }
         }
     }
 }

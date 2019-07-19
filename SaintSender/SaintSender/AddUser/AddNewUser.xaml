@@ -13,7 +13,7 @@
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="40" Margin="200,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="password" HorizontalAlignment="Left" Height="40" Margin="200,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="560"  FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="confirmPassword" HorizontalAlignment="Left" Height="40" Margin="200,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="save" Content="Save" HorizontalAlignment="Left" Margin="640,240,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.32,0.2" Height="40" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="save" Content="Save" HorizontalAlignment="Left" Margin="640,240,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.32,0.2" Height="40" FontSize="16" FontWeight="Bold" Click="Save_Click"/>
         <Button x:Name="cancel" Content="Cancel" HorizontalAlignment="Left" Margin="480,240,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.32,0.2" Height="40" FontSize="16" FontWeight="Bold" Click="Cancel_Click"/>
 
     </Grid>

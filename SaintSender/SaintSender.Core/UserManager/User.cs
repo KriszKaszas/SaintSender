@@ -11,8 +11,9 @@ namespace SaintSender.Core
     {
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
+        public EmailAccount CurrentEmailAccount { get; set; }
 
-        private ObservableCollection<EmailAccount> _accounts = new ObservableCollection<EmailAccount>();
+        public ObservableCollection<EmailAccount> accounts = new ObservableCollection<EmailAccount>();
 
         public User(string userName, string passwordHash)
         {
@@ -22,7 +23,7 @@ namespace SaintSender.Core
 
         public void AddAccount(EmailAccount newAccount)
         {
-            _accounts.Add(newAccount);
+            accounts.Add(newAccount);
         }
     }
 }
